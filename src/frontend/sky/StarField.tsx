@@ -122,10 +122,10 @@ async function mountScene(
 
   let raf = 0;
   let running = true;
-  const clock = new THREE.Clock();
+  const startTime = performance.now();
   const tick = () => {
     if (!running) return;
-    const t = clock.getElapsedTime();
+    const t = (performance.now() - startTime) * 0.001;
     material.uniforms.uTime.value = t;
     if (shootMat) shootMat.uniforms.uTime.value = t;
     if (!reduced) {

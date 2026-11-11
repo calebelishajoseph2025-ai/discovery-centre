@@ -42,7 +42,21 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = parseInt(process.env.PORT || '3000', 10);
+
+function resolvePort(): number {
+  const portArgIndex = process.argv.indexOf('--port');
+  if (portArgIndex !== -1 && process.argv[portArgIndex + 1]) {
+    const parsed = parseInt(process.argv[portArgIndex + 1], 10);
+    if (!isNaN(parsed)) return parsed;
+  }
+  if (process.env.APP_PORT) {
+    const parsed = parseInt(process.env.APP_PORT, 10);
+    if (!isNaN(parsed)) return parsed;
+  }
+  return 3000;
+}
+
+const PORT = resolvePort();
 const isProduction = process.env.NODE_ENV === 'production';
 
 // Request body parser
@@ -603,7 +617,12 @@ async function startServer() {
   });
 }
 
-startServer().catch((err) => {
-  console.error('[Server Error]', err);
-  process.exit(1);
-});
+if (!process.env.VERCEL) {
+  startServer().catch((err) => {
+    console.error('[Server Error]', err);
+    process.exit(1);
+  });
+}
+
+export default app;
+export { app };

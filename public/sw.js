@@ -9,7 +9,7 @@
  * 4. Never touches /api/*, /p/*, or non-GET requests.
  */
 
-const BUILD_ID = 'v2-1794371954159';
+const BUILD_ID = 'v2-1794412037294';
 const SHELL_CACHE = `shell-${BUILD_ID}`;
 const PAGES_CACHE = `pages-${BUILD_ID}`;
 const STATIC_CACHE = 'static-v1';
