@@ -55,8 +55,9 @@ export function parsePath(pathname: string): { locale: Locale; route: AppRoute }
     if (!code) return { locale, route: { name: 'notfound' } };
     return { locale, route: { name: 'short', code } };
   }
-  if (path.startsWith('/exhibits/')) {
-    const slug = path.slice('/exhibits/'.length).split('/')[0] ?? '';
+  if (path.startsWith('/exhibits/') || path.startsWith('/exhibit/')) {
+    const prefix = path.startsWith('/exhibits/') ? '/exhibits/' : '/exhibit/';
+    const slug = path.slice(prefix.length).split('/')[0] ?? '';
     if (!slug) return { locale, route: { name: 'notfound' } };
     return { locale, route: { name: 'exhibit', slug } };
   }
