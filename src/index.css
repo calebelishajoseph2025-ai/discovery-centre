@@ -1,0 +1,4 @@
+@import "tailwindcss";
+@import "./frontend/design/tokens.css";
+@import "./frontend/design/fonts.css";
+@import "./frontend/design/base.css";

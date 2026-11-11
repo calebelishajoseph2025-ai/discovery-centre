@@ -1,0 +1,94 @@
+/* Observatory After Hours — design tokens. Raw colour lives here only. */
+
+:root,
+[data-theme="dark"] {
+  --bg: #05090c;
+  --surface-1: #0c1216;
+  --surface-2: #141c22;
+  --text: #e9eee7;
+  --text-muted: #9fb0ac;
+  --hairline: #2a3a34;
+  --lantern: #f2b45c;
+  --ember: #d46a3a;
+  --dusk-rose: #c9849a;
+  --verdigris: #3d9b8a;
+  --moss: #6f8f4e;
+  --on-accent: #0b1012;
+  --focus: #f2b45c;
+  --danger: #e07070;
+  --sky-opacity: 1;
+  --theme-color: #05090c;
+}
+
+[data-theme="light"] {
+  --bg: #f4efe5;
+  --surface-1: #fffaf2;
+  --surface-2: #ece4d4;
+  --text: #1c1914;
+  --text-muted: #5c564c;
+  --hairline: #d4cbb8;
+  --lantern: #94530a;
+  --ember: #9a3d16;
+  --dusk-rose: #8a4458;
+  --verdigris: #1f6d60;
+  --moss: #3f5c28;
+  --on-accent: #fffaf2;
+  --focus: #94530a;
+  --danger: #b42318;
+  --sky-opacity: 0.35;
+  --theme-color: #f4efe5;
+}
+
+[data-quiet="true"] {
+  --sky-opacity: 0.45;
+}
+
+[data-theme="light"][data-quiet="true"] {
+  --sky-opacity: 0.2;
+}
+
+[data-accent="lantern"] {
+  --exhibit-accent: var(--lantern);
+}
+[data-accent="ember"] {
+  --exhibit-accent: var(--ember);
+}
+[data-accent="dusk-rose"] {
+  --exhibit-accent: var(--dusk-rose);
+}
+[data-accent="verdigris"] {
+  --exhibit-accent: var(--verdigris);
+}
+[data-accent="moss"] {
+  --exhibit-accent: var(--moss);
+}
+
+@theme inline {
+  --font-display: "Fraunces Variable", "Noto Serif Tamil", Georgia, "Times New Roman", serif;
+  --font-ui: "Hanken Grotesk Variable", "Noto Sans Tamil", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, "Cascadia Code", monospace;
+
+  --color-bg: var(--bg);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-hairline: var(--hairline);
+  --color-lantern: var(--lantern);
+  --color-ember: var(--ember);
+  --color-dusk-rose: var(--dusk-rose);
+  --color-verdigris: var(--verdigris);
+  --color-moss: var(--moss);
+  --color-on-accent: var(--on-accent);
+  --color-focus: var(--focus);
+  --color-danger: var(--danger);
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+}
+
+html[lang="ta"] {
+  --font-display: "Noto Serif Tamil", "Fraunces Variable", Georgia, serif;
+  --font-ui: "Noto Sans Tamil", "Hanken Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+}

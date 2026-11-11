@@ -1,0 +1,6 @@
+{
+  "name": "Northside Discovery Centre",
+  "description": "Plan your visit to Northside Discovery Centre. Interactive hands-on science exhibits, custom visit planner, quiet hours, and practical visitor information.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

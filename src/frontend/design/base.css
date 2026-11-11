@@ -1,0 +1,266 @@
+@layer base {
+  html {
+    color-scheme: dark;
+    background-color: var(--bg);
+    min-height: 100%;
+  }
+
+  html[data-theme="light"] {
+    color-scheme: light;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100%;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-ui);
+    font-optical-sizing: auto;
+    line-height: 1.6;
+    letter-spacing: -0.011em;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  #root {
+    min-height: 100vh;
+    isolation: isolate;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -3rem;
+    z-index: 80;
+    border-radius: 0.5rem;
+    background: var(--lantern);
+    color: var(--on-accent);
+    padding: 0.5rem 0.75rem;
+  }
+  .skip-link:focus {
+    top: 1rem;
+  }
+
+  body::after {
+    content: "";
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+    background-image: radial-gradient(circle at 1px 1px, var(--text) 0.6px, transparent 0.7px);
+    background-size: 3px 3px;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display);
+    font-variation-settings: "SOFT" 40, "WONK" 0.4, "opsz" 72;
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+  }
+
+  html[lang="ta"] h1,
+  html[lang="ta"] h2,
+  html[lang="ta"] h3,
+  html[lang="ta"] .font-display {
+    letter-spacing: 0;
+    line-height: 1.45;
+    font-variation-settings: normal;
+  }
+
+  html[lang="ta"] {
+    line-height: 1.7;
+  }
+
+  html[lang="ta"] .small-caps {
+    letter-spacing: 0.06em;
+    text-transform: none;
+  }
+
+  html[lang="ta"] .hero-title {
+    max-width: 16rem;
+    font-size: clamp(2.4rem, 8vw, 4.6rem);
+    line-height: 1.4;
+  }
+
+  @media (max-width: 79.99rem) {
+    html[lang="ta"] .planner-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  #planner,
+  #exhibits,
+  #visit,
+  #journey,
+  #best-time,
+  #main-content,
+  #top {
+    scroll-margin-top: 6.5rem;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+  }
+
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--lantern) 40%, transparent);
+    color: var(--text);
+  }
+
+  img,
+  svg,
+  canvas {
+    max-width: 100%;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+    color: inherit;
+  }
+
+  a {
+    color: inherit;
+  }
+}
+
+@layer utilities {
+  .hairline {
+    border: 1px solid var(--hairline);
+  }
+
+  .brass-rule {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--lantern) 18%,
+      var(--hairline) 50%,
+      var(--lantern) 82%,
+      transparent
+    );
+    opacity: 0.7;
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+    font-family: var(--font-mono);
+  }
+
+  .small-caps {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+[data-quiet="true"] *,
+[data-quiet="true"] *::before,
+[data-quiet="true"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+@media print {
+  @page {
+    margin: 12mm;
+  }
+
+  html,
+  body {
+    background: white !important;
+    color: #111 !important;
+    font-size: 12pt;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  body::after {
+    display: none !important;
+  }
+
+  header,
+  footer,
+  nav,
+  #top,
+  #journey,
+  #exhibits,
+  #best-time,
+  #visit,
+  #quality,
+  .no-print,
+  [data-sky],
+  [data-component="guide-pip"],
+  [data-component="feedback-widget"],
+  [data-component="social-proof"] {
+    display: none !important;
+  }
+
+  #planner {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .planner-grid {
+    display: block !important;
+  }
+
+  #print-plan {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: white !important;
+    color: #111 !important;
+    box-shadow: none !important;
+  }
+
+  a[href]::after {
+    content: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .print-break-inside {
+    break-inside: avoid;
+  }
+}
